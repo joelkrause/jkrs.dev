@@ -1,11 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title, id }) {
 
-  const metaDescription = description || wordpressSiteMetadata.description
+  const metaDescription = description
 
   return (
     <Helmet
@@ -14,7 +13,7 @@ function SEO({ description, lang, meta, title, id }) {
         id,
       }}
       title={title}
-      titleTemplate={`%s`}
+      titleTemplate={`%s | jkrs.dev`}
       meta={[
         {
           name: `description`,
@@ -38,7 +37,7 @@ function SEO({ description, lang, meta, title, id }) {
         },
         {
           name: `twitter:creator`,
-          content: wordpressSiteMetadata.name,
+          content: '@joel_krause',
         },
         {
           name: `twitter:title`,

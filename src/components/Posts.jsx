@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post'
+import SEO from '../components/global/seo';
 
 const Posts = () => {
     return (

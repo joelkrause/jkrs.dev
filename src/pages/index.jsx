@@ -1,11 +1,14 @@
 import React from "react"
 import styled from 'styled-components';
 import { breakpointFrom, breakpointTo, breakpoints } from '../components/global/StyledBreakpoints';
+import SEO from '../components/global/seo';
 
 import Posts from '../components/Posts'
 
 const PageHome = () =>{
     return(
+        <>
+        <SEO title="Home" />
         <main className="container">
             <Hero>
                 <p>Hey, I'm Joel</p>
@@ -13,6 +16,7 @@ const PageHome = () =>{
             </Hero>
             <Posts />
         </main>
+        </>
     )
 }
 

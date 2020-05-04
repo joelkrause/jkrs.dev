@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, StaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
 import styled from 'styled-components';
 import { breakpointFrom, breakpointTo, breakpoints } from './StyledBreakpoints';
 
@@ -8,8 +9,9 @@ const Header = () => {
     <>
       <HeaderWrapper>
         <NavWrapper>
-          <NavLink to="/">Home</NavLink>
           <NavLink to="/posts">Posts</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </NavWrapper>
         <Logo>
           <Link to="/">
@@ -29,26 +31,24 @@ const HeaderWrapper = styled.header`
   display:flex;
   padding:1rem;
   width:100vw;
-  position:relative;
+  position:sticky;
+  top:0;
   z-index:1;
 `
 const NavWrapper = styled.nav`
   display:flex;
   flex-grow:1;
   justify-content:flex-start;
-  @media (min-width:1280px){
-    flex-direction:row;
-  }
 `
 const NavLink = styled(props => <Link {...props} />)`
-  padding:0 1rem 0 0;
+  margin:0 1rem 0 0;
   text-decoration:none;
   color:var(--primaryColor);
-  &.active{
-    color:green;
-  }
-  :hover{
-    color:gray;
+  position:relative;
+  transition:all 0.35s;
+  &:hover,
+  &[aria-current="page"]{
+    color:var(--accentColor);
     text-decoration:none;
   }
 `

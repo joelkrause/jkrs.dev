@@ -12,10 +12,11 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`)
-      }
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
     },
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {

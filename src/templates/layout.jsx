@@ -2,6 +2,7 @@ import React from "react"
 import { TransitionProvider, TransitionViews } from "gatsby-plugin-transitions";
 
 import Header from "../components/global/header"
+import Footer from "../components/global/footer"
 import "../assets/styles/global.scss"
 
 const Layout = ({ location,children }) => {
@@ -12,9 +13,9 @@ const Layout = ({ location,children }) => {
       mode="successive"
       enter={{
         opacity: 0,
-        transform: "translateY(15px)",
+        transform: "translateY(-25px)",
         config: {
-          duration: 150
+          duration: 200
         }
       }}
       usual={{
@@ -23,9 +24,9 @@ const Layout = ({ location,children }) => {
       }}
       leave={{
         opacity: 0,
-        transform: "translateY(15px)",
+        transform: "translateY(-25px)",
         config: {
-          duration: 150
+          duration: 200
         }
       }}
     >
@@ -33,6 +34,7 @@ const Layout = ({ location,children }) => {
       <TransitionViews>
         {children}
       </TransitionViews>
+      <Footer />
     </TransitionProvider>
     </>
   )

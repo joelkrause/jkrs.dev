@@ -10,7 +10,7 @@ const postsQuery = graphql`
         frontmatter {
             title
             path
-            date
+            date(formatString: "MMMM DD, YYYY")
         }
       }
     }
@@ -30,10 +30,7 @@ const Posts = () => {
                             {data.allMarkdownRemark.edges.map(node => {
                             const postData = node.node.frontmatter
                             return (
-                                <Link to={postData.path}>
-                                    {postData.title}
-                                    {postData.date}
-                                </Link >
+                                <Post data={postData} />
                             )
                             })}
                         </>

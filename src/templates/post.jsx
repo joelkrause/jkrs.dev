@@ -1,7 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import styled from 'styled-components';
 import { breakpointFrom, breakpointTo, breakpoints } from '../components/global/StyledBreakpoints';
+import SEO from '../components/global/seo';
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -10,6 +12,7 @@ export default function Template({
   const { frontmatter, html } = markdownRemark
   return (
     <>
+        <SEO title={frontmatter.title} />
         <PostHero>
             <div className="container">
                 <PostTags>{frontmatter.tags}</PostTags>
@@ -18,10 +21,9 @@ export default function Template({
                 <PostExcerpt>{frontmatter.excerpt}</PostExcerpt>
             </div>
         </PostHero>
-        <div
-          className="container"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="container">
+            <div class="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
+        </div>
     </>
   )
 }
@@ -36,15 +38,26 @@ export const pageQuery = graphql`
         title
         excerpt
         tags
+        hero {
+            childImageSharp {
+            fluid(quality: 100, pngCompressionSpeed: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
 `
 
 // Styles
-
 const PostHero = styled.header`
     padding:7.5vw 0;
+`
+
+const PostHeroImage = styled.img`
+    max-width: 100%;
+    margin:0 0 7.5vw;
 `
 
 const PostTags = styled.div`

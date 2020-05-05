@@ -13,9 +13,9 @@ const Layout = ({ location,children }) => {
       mode="successive"
       enter={{
         opacity: 0,
-        transform: "translateY(-25px)",
+        transform: "translateY(15px)",
         config: {
-          duration: 200
+          duration: 150
         }
       }}
       usual={{
@@ -24,9 +24,9 @@ const Layout = ({ location,children }) => {
       }}
       leave={{
         opacity: 0,
-        transform: "translateY(-25px)",
+        transform: "translateY(15px)",
         config: {
-          duration: 200
+          duration: 150
         }
       }}
     >

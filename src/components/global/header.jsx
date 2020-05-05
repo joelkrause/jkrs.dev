@@ -55,6 +55,9 @@ const NavLink = styled(props => <Link {...props} />)`
 const Logo = styled.div`
 font-size:1rem;
 img{
-  width:3rem;
+  width:5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 `

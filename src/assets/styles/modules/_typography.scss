@@ -1,12 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 body {
-    font-family: var(--mainFont);
+    font-family: 'Inter';
     font-weight: normal;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    background: var(--bgColor);
+    color: var(--primaryColor);
+}
+
+pre {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 3px;
+    margin: 2rem 0;
 }

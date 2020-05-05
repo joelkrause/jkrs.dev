@@ -10,8 +10,6 @@ const Header = () => {
       <HeaderWrapper>
         <NavWrapper>
           <NavLink to="/posts">Posts</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
         </NavWrapper>
         <Logo>
           <Link to="/">

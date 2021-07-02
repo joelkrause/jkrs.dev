@@ -1,0 +1,56 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
+      }
+    },
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "Post ID"
+      }
+    },
+    "post_excerpt" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph",
+        "label" : "Post Excerpt"
+      }
+    },
+    "body" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "Body"
+      }
+    },
+    "content" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label" : "Content"
+      }
+    }
+  },
+  "Media" : {
+    "post_icon" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Post Icon"
+      }
+    },
+    "post_hero" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Post Hero"
+      }
+    }
+  }
+}

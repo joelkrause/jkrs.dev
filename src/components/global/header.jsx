@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "gatsby"
-import Img from "gatsby-image"
 import styled from 'styled-components';
 import { breakpointFrom, breakpointTo, breakpoints } from './StyledBreakpoints';
+import Memoji from './memoji'
 
 const Header = () => {
   return(
@@ -13,7 +13,7 @@ const Header = () => {
         </NavWrapper>
         <Logo>
           <Link to="/">
-            <img src="/memoji-normal.png" />
+            <Memoji />
           </Link>
         </Logo>
 

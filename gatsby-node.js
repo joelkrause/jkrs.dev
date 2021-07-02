@@ -1,38 +1,25 @@
-const path = require(`path`)
+const path = require('path')
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`src/templates/post.jsx`)
-
-  const result = await graphql(`
+  const pages = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allPrismicPost {
         edges {
           node {
-            frontmatter {
-              path
-            }
+            uid
           }
         }
       }
     }
   `)
 
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
-  }
-
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  pages.data.allPrismicPost.edges.forEach((page) => {
     createPage({
-      path: node.frontmatter.path,
-      component: blogPostTemplate,
-      context: {}, // additional data can be passed via context
+      path: `/post/${page.node.uid}`,
+      component: path.resolve(__dirname, 'src/templates/post.jsx'),
+      context: { ...page.node },
     })
   })
 }

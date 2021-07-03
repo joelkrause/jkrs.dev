@@ -1,8 +1,6 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs'
 import { Link } from "gatsby"
-import styled from 'styled-components';
-import { breakpointFrom, breakpointTo, breakpoints } from '../components/global/StyledBreakpoints';
 
 const Post = ({data}) => {
     return (

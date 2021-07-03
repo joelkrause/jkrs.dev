@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from "gatsby"
-import styled from 'styled-components';
-import { breakpointFrom, breakpointTo, breakpoints } from './StyledBreakpoints';
 import Memoji from './memoji'
 
 const Header = () => {

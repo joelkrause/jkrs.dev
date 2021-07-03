@@ -1,10 +1,6 @@
 import React from "react"
 import { graphql, Link } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
-import { withPreview } from 'gatsby-source-prismic'
-import styled from 'styled-components';
-import { breakpointFrom, breakpointTo, breakpoints } from '../components/global/StyledBreakpoints';
-import moment from "moment";
 import SEO from '../components/global/seo';
 
 export const query = graphql`

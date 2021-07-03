@@ -2,7 +2,7 @@ import React from 'react'
 
 const Memoji = () => {
     return(
-        <img src="/memoji-normal.png" />
+        <img className="w-20" src="/memoji-normal.png" />
     )
 }
 

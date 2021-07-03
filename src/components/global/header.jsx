@@ -7,55 +7,19 @@ import Memoji from './memoji'
 const Header = () => {
   return(
     <>
-      <HeaderWrapper>
-        <NavWrapper>
-          <NavLink to="/posts">Posts</NavLink>
-        </NavWrapper>
-        <Logo>
-          <Link to="/">
-            <Memoji />
+      <header className="sticky top-0 bg-white p-12 grid grid-cols-12">
+        <nav class="col-span-6 flex justify-start items-center">
+          <Link to="/" className="no-underline text-gray-600 hover:text-gray-800 mr-4">Home</Link>
+          <Link to="/posts" className="no-underline text-gray-600 hover:text-gray-800 mr-4">Posts</Link>
+        </nav>
+        <div className="logo col-span-6 flex justify-end items-center">
+          <Link to="/" className="font-bold text-gray-600">
+            Joel Krause
           </Link>
-        </Logo>
-
-      </HeaderWrapper>
+        </div>
+      </header>
       </>
   )
 }
 
 export default Header
-
-// Styles
-const HeaderWrapper = styled.header`
-  display:flex;
-  padding:1rem;
-  width:100vw;
-  position:sticky;
-  top:0;
-  z-index:1;
-`
-const NavWrapper = styled.nav`
-  display:flex;
-  flex-grow:1;
-  justify-content:flex-start;
-`
-const NavLink = styled(props => <Link {...props} />)`
-  margin:0 1rem 0 0;
-  text-decoration:none;
-  color:var(--primaryColor);
-  position:relative;
-  transition:all 0.35s;
-  &:hover,
-  &[aria-current="page"]{
-    color:var(--accentColor);
-    text-decoration:none;
-  }
-`
-const Logo = styled.div`
-font-size:1rem;
-img{
-  width:5rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-`

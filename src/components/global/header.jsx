@@ -4,6 +4,7 @@ import Memoji from './memoji'
 
 
 const Header = () => {
+  const getColourScheme = window.localStorage.getItem('mode')
   const [isDark, setisDark] = useState(false);
   
   if (isDark) {

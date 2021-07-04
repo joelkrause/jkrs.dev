@@ -16,7 +16,7 @@ module.exports = {
         repositoryName: 'jkrs',
         accessToken: 'MC5YcnZmZkJFQUFDUUEwdW56.77-9HA_vv71D77-977-9fiXvv73vv70t77-9e--_vVDvv73vv73vv70I77-9T1gMT--_vQ3vv713F--_vQI',
         schemas:{
-          blogPost: require('./custom_types/blogPost.json'),
+          blogPost: require('./custom_types/post.json'),
         },
         linkResolver: () => (doc) => linkResolver(doc),
       },

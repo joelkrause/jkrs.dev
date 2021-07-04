@@ -26,6 +26,5 @@
 @tailwind utilities;
 
 h1 {
-    @apply text-6xl font-bold py-8;
-    font-family: 'Recoleta',serif;
+    @apply text-6xl font-bold py-8 font-recoleta;
 }

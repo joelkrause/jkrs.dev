@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const Post = ({data}) => {
     return (
         <Link to={data.node.url} className="post py-4 flex flex-wrap justify-between border-b border-gray-200">
-            <p className="font-recoleta text-xl">{RichText.asText(data.node.data.title)}</p>
+            <p className="font-recoleta text-xl">{data.node.data.title.text}</p>
             <p>{data.node.first_publication_date}</p>      
             <div className="tags flex items-center w-full mt-4">
             {data.node.tags.map(node => {

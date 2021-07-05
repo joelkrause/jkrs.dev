@@ -13,6 +13,21 @@
         "label" : "Post ID"
       }
     },
+    "featured_post" : {
+      "type" : "Boolean",
+      "config" : {
+        "default_value" : false,
+        "label" : "Featured Post"
+      }
+    },
+    "hero_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Hero Image"
+      }
+    },
     "post_excerpt" : {
       "type" : "StructuredText",
       "config" : {

@@ -1,1 +1,0 @@
-## Images for assets go here

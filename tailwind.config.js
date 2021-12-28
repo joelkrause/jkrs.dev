@@ -1,10 +1,19 @@
+// tailwind.config.js
 module.exports = {
-  purge: [],
+  mode: "jit",
+  purge: [
+    './components/**/*.{vue,js}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
     fontFamily:{
-      'recoleta':'Recoleta'
+      'body':'soleil',
+      'display':'Recoleta'
     }
   },
   variants: {
@@ -12,7 +21,7 @@ module.exports = {
   },
   corePlugins: {
     container: false
-  },
+  },  
   plugins: [
     function ({ addComponents }) {
       addComponents({

@@ -1,3 +1,7 @@
 node_modules
-.cache
-public
+*.log
+.nuxt
+nuxt.d.ts
+.output
+.env
+package-lock.json

@@ -2,7 +2,7 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   jit: true,
-  darkMode: true,
+  darkMode: "media",
   theme: {
     extend: {},
   },

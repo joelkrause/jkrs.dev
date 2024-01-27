@@ -12,7 +12,7 @@ const heroImageDimensions = heroImage.split('/')[5].split('x')
     <Fragment set:html={content} />
     
     <ul class="mt-12 flex gap-4">
-      {blok?.social_links?.map(({link, title},index) => (
+      {blok?.social_links?.map(({link, title}, index) => (
         <>
           <li>
             <a href={link?.url} target={link?.target} class="social">{title}</a>

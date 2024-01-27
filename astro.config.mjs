@@ -7,6 +7,9 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    domains: ["a.storyblok.com"],
+  },
   integrations: [
     tailwind(),
     storyblok({

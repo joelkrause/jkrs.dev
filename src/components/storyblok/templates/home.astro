@@ -13,18 +13,18 @@ const heroImageDimensions = heroImage.split('/')[5].split('x')
     <Fragment set:html={content} />
     {blok?.social_links?.length >= 0 && (
       <ul class="mt-12 flex gap-4">
-      {blok?.social_links?.map(({ link, title }: { link: any, title:string }, index: number) => {
-        const url = link?.linktype === "email" ? `mailto:${link?.email}` : link?.url
-        return (
-          <>
-            <li>
-              <a href={url} target={link?.target} class="social">{title}</a>
-            </li>
-            {index !== blok?.social_links?.length - 1 && <li>&bull;</li>}
-          </>
-        )
-      })}
-    </ul>
+        {blok?.social_links?.map(({ link, title }: { link: any, title:string }, index: number) => {
+          const url = link?.linktype === "email" ? `mailto:${link?.email}` : link?.url
+          return (
+            <>
+              <li>
+                <a href={url} target={link?.target} class="social">{title}</a>
+              </li>
+              {index !== blok?.social_links?.length - 1 && <li>&bull;</li>}
+            </>
+          )
+        })}
+      </ul>
     )}
   </div>
 </div>

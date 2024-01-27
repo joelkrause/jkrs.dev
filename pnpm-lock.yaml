@@ -11,6 +11,12 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.2.4)(tailwindcss@3.4.1)
+  '@storyblok/astro':
+    specifier: ^4.0.2
+    version: 4.0.2(astro@4.2.4)
+  '@storyblok/js':
+    specifier: ^3.0.6
+    version: 3.0.6
   astro:
     specifier: ^4.2.4
     version: 4.2.4(typescript@5.3.3)
@@ -23,6 +29,9 @@ dependencies:
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
+  vite:
+    specifier: ^5.0.12
+    version: 5.0.12
 
 packages:
 
@@ -976,6 +985,22 @@ packages:
     dev: false
     optional: true
 
+  /@storyblok/astro@4.0.2(astro@4.2.4):
+    resolution: {integrity: sha512-m3xP7+NCrku7SkJtdO2Ri+95R67GzGVC86u36lh8XwXwHuYqOB/eQxKw0vRJZKcNgkPcg18wfigJSCKyggQr6g==}
+    peerDependencies:
+      astro: ^3.0.0 || ^4.0.0
+    dependencies:
+      '@storyblok/js': 3.0.6
+      astro: 4.2.4(typescript@5.3.3)
+      camelcase: 8.0.0
+    dev: false
+
+  /@storyblok/js@3.0.6:
+    resolution: {integrity: sha512-Kbz5D1pcKWgjqecF+rz1bq5742YpCZe7+B8Zrtp979QOXFpAurHm2BrmzVZy75G2BevWR5CcsK9MzLnyief1Kw==}
+    dependencies:
+      storyblok-js-client: 6.6.4
+    dev: false
+
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
     dependencies:
@@ -1408,6 +1433,11 @@ packages:
   /camelcase@7.0.1:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
+    dev: false
+
+  /camelcase@8.0.0:
+    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
+    engines: {node: '>=16'}
     dev: false
 
   /caniuse-lite@1.0.30001580:
@@ -3591,6 +3621,10 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       bl: 5.1.0
+    dev: false
+
+  /storyblok-js-client@6.6.4:
+    resolution: {integrity: sha512-nFIrCK86l1KZQkG6X4vYHkbwkHp31zJnssav5ktnD28QZcBC5utc++f4xhIlYJ2+boYbewMGlnPZ1YzFuudbzA==}
     dev: false
 
   /stream-parser@0.3.1:

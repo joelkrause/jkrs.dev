@@ -1,40 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import joelImage from '../assets/joel.png';
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import Layout from '@components/layout.astro'
+const storyblokApi = useStoryblokApi()
+
+const { data: { story:{ content } } } = await storyblokApi.get("cdn/stories/home", {
+  version: import.meta.env.DEV ? "draft" : "published",
+});
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>joel krause</title>
-	</head>
-	<body class="dark:bg-black/90 dark:text-white bg-gray-100 text-black">
-		<div class="container max-w-4xl">
-			<div class="flex flex-col gap-4 p-8 md:p-24">
-				<Image loading="eager" src={joelImage} alt="joel sitting at a desk." class="w-fit h-48 mb-8 md:mb-12" />
-				<p>hey, i'm joel 👋 principal engineer at <a class="border-b-2 text-green-500 border-green-500" href="https://dotcommerce.com.au" target="_blank">dotcommerce</a> from melbourne, australia.</p>
-				<p>i work on headless ecommerce for merchants such as <a href="https://decjuba.com.au" target="_blank">decjuba</a>, <a href="https://www.petersheppard.com.au" target="_blank">peter sheppard</a>, <a href="https://tonybianco.com" target="_blank">tony bianco</a>, <a href="https://kikki-k.com" target="_blank">kikki.k</a> + more. i use remix, sanity, hydrogen and shopify plus.</p>
-				<p>feel free to shoot me an <a href="mailto:hey@jkrs.dev" target="_blank">email</a> or connect on <a href="https://www.linkedin.com/in/jkrs/" target="_blank">linkedin</a>!</p>
-				<ul class="mt-12 flex gap-4">
-					<li><a href="https://github.com/joelkrause" target="_blank" class="social">github</a></li>
-					<li>|</li>
-					<li><a href="https://www.linkedin.com/in/jkrs/" target="_blank" class="social">linkedin</a></li>
-					<li>|</li>
-					<li><a href="https://x.com/jkrs_dev" target="_blank" class="social">x</a></li>
-					<li>|</li>
-					<li><a href="https://instagram.com/developer_joel" target="_blank" class="social">instagram</a></li>
-				</ul>
-			</div>
-		</div>
-	</body>
-</html>
-
-<style is:global>
-/* @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;800&display=swap'); */
-a:not(.social) {
-	@apply border-b-2 text-green-500 border-green-500;
-}
-</style>
+<Layout>
+	<StoryblokComponent blok={content} />
+</Layout>

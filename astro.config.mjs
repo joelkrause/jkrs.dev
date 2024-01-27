@@ -12,7 +12,7 @@ export default defineConfig({
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       components: {
-        home: "components/storyblok/templates/home",
+        homePage: "components/storyblok/templates/home",
       },
     }),
   ],

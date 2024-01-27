@@ -1,22 +1,25 @@
 ---
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
 import { Image } from 'astro:assets';
 const { blok } = Astro.props
+const content = renderRichText(blok.hero_content)
+const heroImage = blok.hero_image.filename
+const heroImageDimensions = heroImage.split('/')[5].split('x')
 ---
-<div class="container max-w-4xl">
-  <pre>{JSON.stringify(blok,null,2)}</pre>
+<div class="container max-w-4xl"  {...storyblokEditable(blok)}>
   <div class="flex flex-col gap-4 p-8 md:p-24">
-    <!-- <Image loading="eager" src={joelImage} alt="joel sitting at a desk." class="w-fit h-48 mb-8 md:mb-12" /> -->
-    <p>hey, i'm joel 👋 principal engineer at <a class="border-b-2 text-green-500 border-green-500" href="https://dotcommerce.com.au" target="_blank">dotcommerce</a> from melbourne, australia.</p>
-    <p>i work on headless ecommerce for merchants such as <a href="https://decjuba.com.au" target="_blank">decjuba</a>, <a href="https://www.petersheppard.com.au" target="_blank">peter sheppard</a>, <a href="https://tonybianco.com" target="_blank">tony bianco</a>, <a href="https://kikki-k.com" target="_blank">kikki.k</a> + more. i use remix, sanity, hydrogen and shopify plus.</p>
-    <p>feel free to shoot me an <a href="mailto:hey@jkrs.dev" target="_blank">email</a> or connect on <a href="https://www.linkedin.com/in/jkrs/" target="_blank">linkedin</a>!</p>
+    <Image loading="eager" src={heroImage} width={heroImageDimensions?.[0]} height={heroImageDimensions?.[1]} alt="joel sitting at a desk." class="w-fit h-48 mb-8 md:mb-12" />
+    <Fragment set:html={content} />
+    
     <ul class="mt-12 flex gap-4">
-      <li><a href="https://github.com/joelkrause" target="_blank" class="social">github</a></li>
-      <li>|</li>
-      <li><a href="https://www.linkedin.com/in/jkrs/" target="_blank" class="social">linkedin</a></li>
-      <li>|</li>
-      <li><a href="https://x.com/jkrs_dev" target="_blank" class="social">x</a></li>
-      <li>|</li>
-      <li><a href="https://instagram.com/developer_joel" target="_blank" class="social">instagram</a></li>
+      {blok?.social_links?.map(({link, title},index) => (
+        <>
+          <li>
+            <a href={link?.url} target={link?.target} class="social">{title}</a>
+          </li>
+          {index !== blok?.social_links?.length - 1 && <li>&bull;</li>}
+        </>
+      ))}
     </ul>
   </div>
 </div>

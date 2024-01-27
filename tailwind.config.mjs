@@ -4,9 +4,6 @@ export default {
   jit: true,
   darkMode: "media",
   theme: {
-    container: {
-      center: true,
-    },
     extend: {},
   },
   plugins: [],

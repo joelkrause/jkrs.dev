@@ -1,0 +1,11 @@
+---
+const { tag_list } = Astro.props
+---
+<ul class="flex flex-wrap gap-2">
+  {tag_list.map((tag, index) => (
+    <>
+      <li class="text-gray-500 text-sm">{tag}</li>
+      {index < tag_list.length - 1 && <li class="text-gray-500 text-sm">•</li>}
+    </>
+  ))}
+</ul>

@@ -4,7 +4,14 @@ export default {
   jit: true,
   darkMode: "media",
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        base: "1.125rem",
+      },
+      fontFamily: {
+        sans: ["Space Grotesk", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

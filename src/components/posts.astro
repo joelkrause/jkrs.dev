@@ -1,23 +1,29 @@
 ---
 import TagList from "@components/tags.astro";
 
-const { posts } = Astro.props
+const { posts, showTags, title } = Astro.props
+const tags = [...new Set(posts?.map(post => post?.tag_list).flat())]
 ---
-<div class="flex flex-col gap-4 px-8 md:px-24 pb-8 md:pb-24">
-  <h2 class="text-2xl font-bold mb-4">Blog Posts</h2>
-  <ul>
-  {posts?.map(post => {
-    return (
-      <li>
-        <a href={post.slug} class="social flex items-start justify-between">
-          <div>
-            <p class="mb-2 text-lg">{post.title}</p>
-            {post?.tag_list && <TagList tag_list={post?.tag_list} />}
-          </div>
-          <p class="text-gray-500">{post?.publishedAt}</p>
-        </a>
-      </li>
-    )
-  })}
+<div class="flex flex-col items-start gap-4 py-8 md:py-24 w-full">
+  {Astro.url.pathname === "/blog" && <button onclick="history.back()">&LeftArrow; Back</button>}
+  <div class="w-full flex items-center justify-between">
+    {title && <h2 class="text-2xl font-bold mb-4">{title}</h2>}
+    {Astro.url.pathname !== "/blog" && <a href="/blog">See All</a>}
+  </div>
+  {showTags && <pre>{JSON.stringify(tags, null, 2)}</pre>}
+  <ul class="w-full">
+    {posts?.map(post => {
+      return (
+        <li>
+          <a href={post.slug} class="social flex items-start justify-between">
+            <div>
+              <p class="mb-2 text-lg">{post.title}</p>
+              {post?.tag_list && <TagList tag_list={post?.tag_list} />}
+            </div>
+            <p class="text-gray-500">{post?.publishedAt}</p>
+          </a>
+        </li>
+      )
+    })}
   </ul>
 </div>

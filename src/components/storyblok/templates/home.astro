@@ -7,6 +7,7 @@ const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get('cdn/stories', {
   version: import.meta.env.DEV ? "draft" : "published",
   content_type: 'blog_post',
+  per_page:5
 })
 
 const posts = data.stories.map(story => {
@@ -23,8 +24,8 @@ const content = renderRichText(blok.hero_content)
 const heroImage = blok?.hero_image?.filename
 const heroImageDimensions = heroImage?.split('/')[5].split('x')
 ---
-<div class="container max-w-3xl"  {...storyblokEditable(blok)}>
-  <div class="flex flex-col gap-4 p-8 md:p-24">
+<div class="mx-auto container max-w-3xl px-8" {...storyblokEditable(blok)}>
+  <div class="flex flex-col gap-4 pt-8 md:pt-24">
     {heroImage && <Picture formats={['avif', 'webp']} loading="eager" src={heroImage} width={heroImageDimensions?.[0]} height={heroImageDimensions?.[1]} alt={blok?.hero_image?.alt} class="w-fit h-48 mb-8 md:mb-12" />}
     <Fragment set:html={content} />
     {blok?.social_links?.length >= 0 && (
@@ -43,5 +44,9 @@ const heroImageDimensions = heroImage?.split('/')[5].split('x')
       </ul>
     )}
   </div>
-  {posts?.length > 0 && <Posts posts={posts} />}
+  {posts?.length > 0 && (
+    <div class="w-full pb-8 md:pb-24">
+      <Posts posts={posts} title="Latest Blog Posts" />
+    </div>
+  )}
 </div>

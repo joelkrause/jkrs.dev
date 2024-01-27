@@ -20,11 +20,11 @@ const posts = data.stories.map(story => {
 
 const { blok } = Astro.props
 const content = renderRichText(blok.hero_content)
-const heroImage = blok.hero_image.filename
-const heroImageDimensions = heroImage.split('/')[5].split('x')
+const heroImage = blok?.hero_image?.filename
+const heroImageDimensions = heroImage?.split('/')[5].split('x')
 ---
 <div class="container max-w-3xl"  {...storyblokEditable(blok)}>
-  <div class="flex flex-col gap-4 py-8 md:py-24">
+  <div class="flex flex-col gap-4 p-8 md:p-24">
     {heroImage && <Picture formats={['avif', 'webp']} loading="eager" src={heroImage} width={heroImageDimensions?.[0]} height={heroImageDimensions?.[1]} alt={blok?.hero_image?.alt} class="w-fit h-48 mb-8 md:mb-12" />}
     <Fragment set:html={content} />
     
@@ -41,7 +41,7 @@ const heroImageDimensions = heroImage.split('/')[5].split('x')
     </ul>
     )}
   </div>
-  {posts?.length > 0 && (<div class="flex flex-col gap-4 pb-8 md:pb-24">
+  {posts?.length > 0 && (<div class="flex flex-col gap-4 px-8 md:px-24 pb-8 md:pb-24">
     <h2 class="text-2xl font-bold mb-4">blog posts</h2>
     {posts?.map(post => (
       <a href={post.slug} class="social">

@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 
   return stories.map((story) => {
     return {
+      // @ts-ignore
       params: { slug: story.slug },
     };
   });

@@ -1,6 +1,7 @@
 ---
 import { storyblokEditable, renderRichText } from '@storyblok/astro'
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+
 const { blok } = Astro.props
 const content = renderRichText(blok.hero_content)
 const heroImage = blok.hero_image.filename
@@ -8,11 +9,12 @@ const heroImageDimensions = heroImage.split('/')[5].split('x')
 ---
 <div class="container max-w-4xl"  {...storyblokEditable(blok)}>
   <div class="flex flex-col gap-4 p-8 md:p-24">
-    <Image loading="eager" src={heroImage} width={heroImageDimensions?.[0]} height={heroImageDimensions?.[1]} alt="joel sitting at a desk." class="w-fit h-48 mb-8 md:mb-12" />
+    {heroImage && <Picture formats={['avif', 'webp']} loading="eager" src={heroImage} width={heroImageDimensions?.[0]} height={heroImageDimensions?.[1]} alt={blok?.hero_image?.alt} class="w-fit h-48 mb-8 md:mb-12" />}
     <Fragment set:html={content} />
     
-    <ul class="mt-12 flex gap-4">
-      {blok?.social_links?.map(({link, title}, index) => (
+    {blok?.social_links?.length >= 0 && (
+      <ul class="mt-12 flex gap-4">
+      {blok?.social_links?.map(({ link, title }: { link: any, title:string }, index: number) => (
         <>
           <li>
             <a href={link?.url} target={link?.target} class="social">{title}</a>
@@ -21,5 +23,6 @@ const heroImageDimensions = heroImage.split('/')[5].split('x')
         </>
       ))}
     </ul>
+    )}
   </div>
 </div>

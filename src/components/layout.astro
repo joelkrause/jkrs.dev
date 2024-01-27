@@ -1,7 +1,9 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 const { seo } = Astro.props;
 ---
-<html lang="en">
+<html lang="en" transition:animate="none">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -10,6 +12,7 @@ const { seo } = Astro.props;
 		<link rel="preconnect" href="https://app.storyblok.com" />
 		{seo?.title && <title>{seo?.title}</title>}
 		{seo?.description && <meta name="description" content={seo?.description} />}
+		<ViewTransitions />
 	</head>
 	<body class="dark:bg-black/90 dark:text-white bg-gray-100 text-black">
     <main>

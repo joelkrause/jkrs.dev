@@ -42,7 +42,7 @@ const body = renderRichText(content.body)
       <div class="flex items-center">
         {tag_list && <TagList tag_list={tag_list} />}
         <p class="text-gray-500 text-sm mx-2">•</p>
-        <p class="text-gray-500 text-sm">{publishedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p class="text-gray-500 text-sm">Published on {publishedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
       </div>
       {content?.excerpt && <p>{content.excerpt}</p>}
       {postHero && (

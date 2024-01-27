@@ -7,6 +7,9 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: {
+    defaultStrategy: "viewport",
+  },
   image: {
     domains: ["a.storyblok.com"],
   },

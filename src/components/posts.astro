@@ -15,7 +15,7 @@ const tags = [...new Set(posts?.map(post => post?.tag_list).flat())]
     {posts?.map(post => {
       return (
         <li>
-          <a href={post.slug} class="social flex items-start justify-between">
+          <a href={`${post.slug}`} class="social flex items-start justify-between">
             <div>
               <p class="mb-2 text-lg">{post.title}</p>
               {post?.tag_list && <TagList tag_list={post?.tag_list} />}

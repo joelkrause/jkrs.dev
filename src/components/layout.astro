@@ -1,10 +1,15 @@
+---
+const { seo } = Astro.props;
+---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>joel krause</title>
+		<link rel="preconnect" href="https://app.storyblok.com" />
+		{seo?.title && <title>{seo?.title}</title>}
+		{seo?.description && <meta name="description" content={seo?.description} />}
 	</head>
 	<body class="dark:bg-black/90 dark:text-white bg-gray-100 text-black">
     <main>

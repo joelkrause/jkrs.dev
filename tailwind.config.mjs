@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro}"],
-  purge: ["./src/**/*.{astro}"],
-  mode: "jit",
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  jit: true,
   darkMode: "media",
   theme: {
     extend: {},

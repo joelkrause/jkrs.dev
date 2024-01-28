@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 
 const { seo } = Astro.props;
+const { pathname } = Astro.url;
 ---
 <html lang="en" transition:animate="none">
 	<head>
@@ -15,6 +16,20 @@ const { seo } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body class="dark:bg-stone-900 dark:text-gray-100 bg-gray-100 text-stone-900">
+		<pre>{JSON.stringify(pathname, null, 2)}</pre>
+		<ul class="fixed top-4 right-4 flex items-center justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 dark:bg-stone-900 bg-gray-100 rounded-full">
+			{pathname !== "/" && (
+				<li>
+					<button onclick="history.back()">&LeftArrow; Back</button>
+				</li>
+			)}
+			<li>
+				<a href="/" class="social">Home</a>
+			</li>
+			<li>
+				<a href="/blog" class="social">Blog</a>
+			</li>
+		</ul>
     <main>
 		  <slot />
     </main>

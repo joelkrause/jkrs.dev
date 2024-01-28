@@ -35,22 +35,20 @@ const publishedDate = new Date(first_published_at);
 const body = renderRichText(content.body)
 ---
 <Layout seo={content?.seo}>
-  <div class="mx-auto container max-w-3xl px-8">
-    <div class="flex flex-col items-start gap-6 pt-24 pb-12">
-      <h1 class="text-2xl md:text-4xl font-bold">{name}</h1>
-      <div class="flex items-center">
-        {tag_list && <TagList tag_list={tag_list} />}
-        <p class="text-gray-500 text-sm mx-2">•</p>
-        <p class="text-gray-500 text-sm">Published on {publishedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-      </div>
-      {content?.excerpt && <p>{content.excerpt}</p>}
-      {postHero && (
-        <div class="md:w-[calc(100%+10rem)] md:ml-[-5rem]">
-          <Picture formats={['avif', 'webp']} loading="eager" src={postHero} width={postHeroDimensions?.[0]} height={postHeroDimensions?.[1]} alt={content.post_hero?.alt} />
-        </div>
-      )}
-      <hr class="h-px w-full border-gray-500" />
+  <div class="flex flex-col items-start gap-6">
+    <h1 class="text-2xl md:text-4xl font-bold">{name}</h1>
+    <div class="flex items-center">
+      {tag_list && <TagList tag_list={tag_list} />}
+      <p class="text-gray-500 text-sm mx-2">•</p>
+      <p class="text-gray-500 text-sm">Published on {publishedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
     </div>
-    <Fragment set:html={body} />
+    {content?.excerpt && <p>{content.excerpt}</p>}
+    {postHero && (
+      <div class="md:w-[calc(100%+10rem)] md:ml-[-5rem]">
+        <Picture formats={['avif', 'webp']} loading="eager" src={postHero} width={postHeroDimensions?.[0]} height={postHeroDimensions?.[1]} alt={content.post_hero?.alt} />
+      </div>
+    )}
+    <hr class="h-px w-full border-gray-500" />
   </div>
+  <Fragment set:html={body} />
 </Layout>

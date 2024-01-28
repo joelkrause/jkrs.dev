@@ -18,7 +18,9 @@ export default defineConfig({
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       components: {
-        homePage: "components/storyblok/templates/home",
+        flexible: "components/storyblok/templates/flexible",
+        home_hero: "components/storyblok/flexible/home_hero",
+        text_block: "components/storyblok/flexible/text_block",
       },
     }),
   ],

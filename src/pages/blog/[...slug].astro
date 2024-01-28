@@ -50,5 +50,5 @@ const body = renderRichText(content.body)
     )}
     <hr class="h-px w-full border-gray-500" />
   </div>
-  <Fragment set:html={body} />
+  <div class="prose" set:html={body} />
 </Layout>

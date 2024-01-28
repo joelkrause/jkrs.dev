@@ -5,5 +5,5 @@ const { blok } = Astro.props
 const content = renderRichText(blok.content)
 ---
 <div {...storyblokEditable(blok)}>
-  <Fragment set:html={content} />
+  <div class="prose" set:html={content} />
 </div>

@@ -4,7 +4,16 @@ export default {
   jit: true,
   darkMode: "media",
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            color: "inherit",
+          },
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

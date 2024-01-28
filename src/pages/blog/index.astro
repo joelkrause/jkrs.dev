@@ -16,7 +16,7 @@ const posts = data.stories.map(story => {
     title: story.name,
     tag_list: story.tag_list,
     slug: story.full_slug,
-    publishedAt: new Date(story.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+    publishedAt: new Date(story.first_published_at).toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' }),
   }
 })
 ---

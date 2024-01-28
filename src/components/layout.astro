@@ -16,7 +16,6 @@ const { pathname } = Astro.url;
 		<ViewTransitions />
 	</head>
 	<body class="dark:bg-stone-900 dark:text-gray-100 bg-gray-100 text-stone-900">
-		<pre>{JSON.stringify(pathname, null, 2)}</pre>
 		<ul class="fixed top-4 right-4 flex items-center justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 dark:bg-stone-900 bg-gray-100 rounded-full">
 			{pathname !== "/" && (
 				<li>

@@ -21,6 +21,7 @@ export default defineConfig({
         flexible: "components/storyblok/templates/flexible",
         home_hero: "components/storyblok/flexible/home_hero",
         text_block: "components/storyblok/flexible/text_block",
+        experience: "components/storyblok/flexible/experience",
       },
     }),
   ],

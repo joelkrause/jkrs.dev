@@ -1,0 +1,37 @@
+---
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+const groupedExperience = blok.items.reduce((acc, item) => {
+  const key = item.company_name
+  if (!acc[key]) {
+    acc[key] = []
+  }
+  const parsedItem = {
+    ...item,
+    start_date: new Date(item.start_date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long' }),
+    end_date: item.end_date ? new Date(item.end_date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long' }) : null,
+  }
+  acc[key].push(parsedItem)
+  return acc
+}, {})
+---
+<div class="py-8 md:py-12" {...storyblokEditable(blok)}>
+  <h2 class="text-2xl font-semibold pb-8 md:pb-12">Experience</h2>
+  {groupedExperience && Object.keys(groupedExperience).map((key) => (
+    <div class="grid grid-cols-12">
+      <h3 class="text-xl font-semibold col-span-4">{key}</h3>
+      <ul class="col-span-8">
+        {groupedExperience[key].map((item) => (
+          <li class="flex flex-col gap-4 mb-8">
+            <div>
+              <h4 class="font-semibold text-base">{item.job_role}</h4>
+              <p class="text-sm text-gray-500">{item.start_date} &mdash; {item.end_date ?? "Current"}</p>
+            </div>
+            <Fragment set:html={renderRichText(item.description)} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

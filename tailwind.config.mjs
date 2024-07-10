@@ -5,14 +5,17 @@ export default {
   darkMode: "media",
   theme: {
     extend: {
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             maxWidth: "none",
             color: "inherit",
+            p: {
+              fontSize: theme("fontSize.lg"),
+            },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

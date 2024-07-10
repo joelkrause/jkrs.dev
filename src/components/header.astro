@@ -7,26 +7,24 @@ const links = [
     isActive: pathname === "/"
   },
   {
-    title:"Blog",
-    url: "/blog",
-    isActive: pathname.startsWith("/blog")
-  },
-  {
     title:"Bio",
     url: "/bio",
     isActive: pathname.startsWith("/bio")
   },
 ]
 ---
-<ul class="w-[calc(100%-2rem)] md:w-auto fixed bottom-4 md:bottom-auto md:top-4 left-4 md:left-auto md:right-4 flex items-center justify-evenly md:justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 dark:bg-stone-900 bg-gray-100 rounded-full">
-  {pathname !== "/" && (
-    <li>
-      <button onclick="history.back()">&LeftArrow; Back</button>
-    </li>
-  )}
-  {links?.map(({title, url, isActive}) => (
-    <li>
-      <a href={url} data-page-active={isActive.toString()} class="social data-[page-active=true]:underline">{title}</a>
-    </li>
-  ))}
-</ul>
+<header class="w-full md:w-auto flex items-center gap-8 fixed z-10 bottom-4 md:bottom-auto md:top-4 left-4 md:left-auto md:right-4">
+  <h1 class="hidden md:block">joel krause</h1>
+  <ul class="w-[calc(100%-2rem)] md:w-auto backdrop-blur-md flex items-center justify-evenly md:justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 rounded-full">
+    {pathname !== "/" && (
+      <li>
+        <button onclick="history.back()">&LeftArrow; Back</button>
+      </li>
+    )}
+    {links?.map(({title, url, isActive}) => (
+      <li>
+        <a href={url} data-page-active={isActive.toString()} class="social data-[page-active=true]:underline">{title}</a>
+      </li>
+    ))}
+  </ul>
+</header>

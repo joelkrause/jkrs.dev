@@ -19,7 +19,7 @@ const { seo } = Astro.props;
 	</head>
 	<body class="dark:bg-stone-900 dark:text-gray-100 bg-gray-100 text-stone-900">
 		<Header />
-    <main class="px-4 md:px-8 mx-auto container max-w-4xl pt-8 md:pt-24">
+    <main class="px-8 mx-auto container max-w-4xl pt-8 md:pt-24 pb-12">
 		  <slot />
     </main>
 	</body>
@@ -30,6 +30,6 @@ body {
 	@apply text-lg;
 }
 a:not(.social) {
-	@apply border-b-2 text-green-500 border-green-500;
+	@apply text-green-500 underline-offset-4;
 }
 </style>

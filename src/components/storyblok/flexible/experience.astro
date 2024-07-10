@@ -1,0 +1,40 @@
+---
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+const groupedExperience = blok.items.reduce((acc, item) => {
+  const key = item.company_name
+  if (!acc[key]) {
+    acc[key] = []
+  }
+  const parsedItem = {
+    ...item,
+    start_date: new Date(item.start_date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long' }),
+    end_date: item.end_date ? new Date(item.end_date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long' }) : null,
+  }
+  acc[key].push(parsedItem)
+  return acc
+}, {})
+---
+<div class="py-8 md:py-12" {...storyblokEditable(blok)}>
+  <h2 class="text-2xl font-semibold border-b border-gray-500 pb-6 mb-12">Experience</h2>
+  {groupedExperience && Object.keys(groupedExperience).map((key) => (
+    <div class="block md:grid grid-cols-12 pb-12">
+      <h3 class="mb-8 md:mb-0 text-xl font-semibold col-span-4">{key}</h3>
+      <ul class="flex flex-col col-span-8">
+        {groupedExperience[key].map((item, index) => (
+          <li class="relative flex flex-col gap-4 border-l border-gray-500 pl-8">
+            <div class="absolute top-0 -left-1.5 w-4 h-8 flex items-start justify-center dark:bg-stone-900 bg-gray-100 pt-2.5">
+              <div class="w-2 h-2 rounded-full bg-gray-500 -ml-1" />
+            </div>
+            <div>
+              <h4 class="font-semibold text-base">{item.job_role}</h4>
+              <p class="text-sm text-gray-500">{item.start_date} &mdash; {item.end_date ?? "Current"}</p>
+            </div>
+            <div class="prose" set:html={renderRichText(item.description)} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

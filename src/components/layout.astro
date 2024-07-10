@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-
+import Header from "@components/header.astro"
 const { seo } = Astro.props;
 ---
 <html lang="en" transition:animate="none">
@@ -12,13 +12,14 @@ const { seo } = Astro.props;
 		<link rel="preconnect" href="https://app.storyblok.com" />
 		{seo?.title && <title>{seo?.title}</title>}
 		{seo?.description && <meta name="description" content={seo?.description} />}
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet" />
 		<ViewTransitions />
 	</head>
 	<body class="dark:bg-stone-900 dark:text-gray-100 bg-gray-100 text-stone-900">
-    <main>
+		<Header />
+    <main class="px-4 md:px-8 mx-auto container max-w-4xl pt-8 md:pt-24">
 		  <slot />
     </main>
 	</body>

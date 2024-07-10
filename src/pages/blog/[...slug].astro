@@ -1,0 +1,54 @@
+---
+import { useStoryblokApi, renderRichText } from '@storyblok/astro'
+import { Picture } from 'astro:assets';
+import Layout from "@components/layout.astro";
+import TagList from "@components/tags.astro";
+
+export async function getStaticPaths() {
+  const sbApi = useStoryblokApi();
+
+  const { data } = await sbApi.get("cdn/stories", {
+    content_type: "blog_post",
+    version: import.meta.env.DEV ? "draft" : "published",
+  });
+
+  const stories = Object.values(data.stories);
+
+  return stories.map((story) => {
+    return {
+      // @ts-ignore
+      params: { slug: story.slug },
+    };
+  });
+}
+
+const sbApi = useStoryblokApi();
+const { slug } = Astro.params;
+const { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
+  version: import.meta.env.DEV ? "draft" : "published",
+});
+
+const { content, name, first_published_at, tag_list } = data.story;
+const postHero = content?.post_hero?.filename;
+const postHeroDimensions = postHero?.split('/')?.[5]?.split('x');
+const publishedDate = new Date(first_published_at);
+const body = renderRichText(content.body)
+---
+<Layout seo={content?.seo}>
+  <div class="flex flex-col items-start gap-6 pb-12">
+    <h1 class="text-2xl md:text-4xl font-bold">{name}</h1>
+    <div class="flex items-center">
+      {tag_list && <TagList tag_list={tag_list} />}
+      <p class="text-gray-500 text-sm mx-2">•</p>
+      <p class="text-gray-500 text-sm">Published on {publishedDate.toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    </div>
+    {content?.excerpt && <p>{content.excerpt}</p>}
+    {postHero && (
+      <div class="md:w-[calc(100%+10rem)] md:ml-[-5rem]">
+        <Picture formats={['avif', 'webp']} loading="eager" src={postHero} width={postHeroDimensions?.[0]} height={postHeroDimensions?.[1]} alt={content.post_hero?.alt} />
+      </div>
+    )}
+    <hr class="h-px w-full border-gray-500" />
+  </div>
+  <div class="prose" set:html={body} />
+</Layout>

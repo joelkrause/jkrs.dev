@@ -5,13 +5,18 @@ export default {
   darkMode: "media",
   theme: {
     extend: {
-      fontSize: {
-        base: "1.125rem",
-      },
-      fontFamily: {
-        sans: ["Space Grotesk", "sans-serif"],
-      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            color: "inherit",
+            p: {
+              fontSize: theme("fontSize.lg"),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

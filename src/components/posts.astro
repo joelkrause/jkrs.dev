@@ -1,0 +1,32 @@
+---
+import TagList from "@components/tags.astro";
+
+const { posts, showTags, title } = Astro.props
+const tags = [...new Set(posts?.map(post => post?.tag_list).flat())]
+---
+<div class="flex flex-col items-start w-full">
+  <div class="w-full flex items-center justify-between">
+    {title && <h2 class="text-2xl font-bold mb-4">{title}</h2>}
+    {Astro.url.pathname !== "/blog" && <a href="/blog">See All</a>}
+  </div>
+  {showTags && (
+    <div class="flex mb-6">
+      {tags?.map(tag => <a href={`/blog?tag=${tag}`} class="social mr-4">{tag}</a>)}
+    </div>
+  )}
+  <ul class="w-full flex flex-col gap-8">
+    {posts?.map(post => {
+      return (
+        <li class="border-b border-gray-500 first:border-t first:pt-6 pb-6 last:border-b-0">
+          <a href={`/${post.slug}`} class="social flex items-start justify-between">
+            <div>
+              <p class="mb-2 text-lg">{post.title}</p>
+              {post?.tag_list && <TagList tag_list={post?.tag_list} />}
+            </div>
+            <p class="text-gray-500">{post?.publishedAt}</p>
+          </a>
+        </li>
+      )
+    })}
+  </ul>
+</div>

@@ -14,17 +14,43 @@ const links = [
 ]
 ---
 <header class="w-full md:w-auto flex items-center gap-8 fixed z-10 bottom-4 md:bottom-auto md:top-4 left-4 md:left-auto md:right-4">
-  <h1 class="hidden md:block">joel krause</h1>
+  <h1 class="hidden md:flex font-[800]">
+    <span class="transform transition-all duration-200 first-initial">J</span>
+    <span class="hide transform transition-all duration-200">o</span>
+    <span class="hide transform transition-all duration-200">e</span>
+    <span class="hide transform transition-all duration-200">l</span>
+    <span class="w-0.5" />
+    <span class="transform transition-all duration-200 second-initial">K</span>
+    <span class="hide transform transition-all duration-200">r</span>
+    <span class="hide transform transition-all duration-200">a</span>
+    <span class="hide transform transition-all duration-200">u</span>
+    <span class="hide transform transition-all duration-200">s</span>
+    <span class="hide transform transition-all duration-200">e</span>
+  </h1>
   <ul class="w-[calc(100%-2rem)] md:w-auto backdrop-blur-md flex items-center justify-evenly md:justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 rounded-full">
-    {pathname !== "/" && (
-      <li>
-        <button onclick="history.back()">&LeftArrow; Back</button>
-      </li>
-    )}
     {links?.map(({title, url, isActive}) => (
       <li>
-        <a href={url} data-page-active={isActive.toString()} class="social data-[page-active=true]:underline">{title}</a>
+        <a href={url} data-page-active={isActive.toString()} class="social data-[page-active=true]:underline underline-offset-4">{title}</a>
       </li>
     ))}
   </ul>
 </header>
+
+<script>
+  window?.addEventListener?.("scroll", () => {
+    const scroll = window.scrollY;
+    const spans = document.querySelectorAll("span.hide");
+    const firstInitial = document.querySelector("span.first-initial");
+    const secondInitial = document.querySelector("span.second-initial");
+
+    if(scroll > 50) {
+      spans.forEach(span => span.classList.add("opacity-0", "translate-x-full"));
+      firstInitial.classList.add("translate-x-[75px]");
+      secondInitial.classList.add("translate-x-[50px]");
+    } else {
+      spans.forEach(span => span.classList.remove("opacity-0", "translate-x-full"));
+      firstInitial.classList.remove("translate-x-[75px]");
+      secondInitial.classList.remove("translate-x-[50px]");
+    }
+  });
+</script>

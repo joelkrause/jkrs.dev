@@ -13,6 +13,21 @@ export default {
             p: {
               fontSize: theme("fontSize.lg"),
             },
+            h1: {
+              fontWeight: "800",
+            },
+            h2: {
+              fontWeight: "800",
+            },
+            h3: {
+              fontWeight: "800",
+            },
+            h4: {
+              fontWeight: "800",
+            },
+            h5: {
+              fontWeight: "800",
+            },
           },
         },
       }),

@@ -19,7 +19,7 @@ const links = [
     <span class="hide transform transition-all duration-200">o</span>
     <span class="hide transform transition-all duration-200">e</span>
     <span class="hide transform transition-all duration-200">l</span>
-    <span class="w-0.5" />
+    <span class="w-1.5" />
     <span class="transform transition-all duration-200 second-initial">K</span>
     <span class="hide transform transition-all duration-200">r</span>
     <span class="hide transform transition-all duration-200">a</span>
@@ -45,11 +45,11 @@ const links = [
 
     if(scroll > 50) {
       spans.forEach(span => span.classList.add("opacity-0", "translate-x-full"));
-      firstInitial.classList.add("translate-x-[75px]");
+      firstInitial.classList.add("translate-x-[80px]");
       secondInitial.classList.add("translate-x-[50px]");
     } else {
       spans.forEach(span => span.classList.remove("opacity-0", "translate-x-full"));
-      firstInitial.classList.remove("translate-x-[75px]");
+      firstInitial.classList.remove("translate-x-[80px]");
       secondInitial.classList.remove("translate-x-[50px]");
     }
   });

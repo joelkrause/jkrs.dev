@@ -12,6 +12,7 @@ export default {
             color: "inherit",
             p: {
               fontSize: theme("fontSize.lg"),
+              fontWeight: 300,
             },
             h1: {
               fontWeight: "800",

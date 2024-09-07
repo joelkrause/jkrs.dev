@@ -14,19 +14,21 @@ const links = [
 ]
 ---
 <header class="w-full md:w-auto flex items-center gap-8 fixed z-10 bottom-4 md:bottom-auto md:top-4 left-4 md:left-auto md:right-4">
-  <h1 class="hidden md:flex font-extrabold">
-    <span class="transform transition-all duration-200 first-initial">J</span>
-    <span class="hide transform transition-all duration-200">o</span>
-    <span class="hide transform transition-all duration-200">e</span>
-    <span class="hide transform transition-all duration-200">l</span>
-    <span class="w-1.5" />
-    <span class="transform transition-all duration-200 second-initial">K</span>
-    <span class="hide transform transition-all duration-200">r</span>
-    <span class="hide transform transition-all duration-200">a</span>
-    <span class="hide transform transition-all duration-200">u</span>
-    <span class="hide transform transition-all duration-200">s</span>
-    <span class="hide transform transition-all duration-200">e</span>
-  </h1>
+  <a href="/" class="social">
+    <h1 class="hidden md:flex font-extrabold">
+      <span class="transform transition-all duration-200 first-initial">J</span>
+      <span class="hide transform transition-all duration-200">o</span>
+      <span class="hide transform transition-all duration-200">e</span>
+      <span class="hide transform transition-all duration-200">l</span>
+      <span class="w-1.5" />
+      <span class="transform transition-all duration-200 second-initial">K</span>
+      <span class="hide transform transition-all duration-200">r</span>
+      <span class="hide transform transition-all duration-200">a</span>
+      <span class="hide transform transition-all duration-200">u</span>
+      <span class="hide transform transition-all duration-200">s</span>
+      <span class="hide transform transition-all duration-200">e</span>
+    </h1>
+  </a>
   <ul class="w-[calc(100%-2rem)] md:w-auto backdrop-blur-md flex items-center justify-evenly md:justify-end gap-4 px-8 py-4 border dark:border-stone-700 border-gray-300 rounded-full">
     {links?.map(({title, url, isActive}) => (
       <li>

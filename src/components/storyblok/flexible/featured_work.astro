@@ -1,8 +1,14 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
 
 const { blok } = Astro.props
-const featuredWork = blok.items
+const featuredWork = blok.items?.map(item => ({
+  ...item,
+  content: {
+    ...item.content,
+    description: renderRichText(item.content?.description)
+  }
+}))
 ---
 <div class="flex flex-col gap-4" {...storyblokEditable(blok)}>
   {featuredWork.map((work) => (
@@ -10,9 +16,9 @@ const featuredWork = blok.items
       <div class="image md:w-1/2">
         IMAGE
       </div>
-      <div class="content md:w-1/2">
+      <div class="md:flex flex-col items-start gap-4 md:w-1/2">
         {work.name && <h2 class="text-3xl font-bold">{work.name}</h2>}
-        <pre>{JSON.stringify(work, null, 2)}</pre>
+        {work.content?.description && <div class="prose" set:html={work.content?.description} />}
         {work?.content?.url && (
           <a href="" class="btn px-4 py-2 dark:bg-white bg-stone-900 dark:text-stone-900 text-white">View Project</a>
         )}
